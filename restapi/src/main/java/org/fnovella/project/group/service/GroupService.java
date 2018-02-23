@@ -15,4 +15,6 @@ public interface GroupService {
     long getApprovedParticipants(Integer idGroup);
     
     boolean isGroupExistsForClassification(Integer classificationId, TypeCategory typeCategory);
+
+    Group getByGroupId(Integer groupId);
 }

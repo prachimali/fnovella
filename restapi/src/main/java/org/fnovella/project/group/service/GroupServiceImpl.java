@@ -15,6 +15,8 @@ import org.fnovella.project.indicators.service.EvaluationIndicatorsService;
 import org.fnovella.project.inscriptions.service.InscriptionService;
 import org.fnovella.project.participant.service.ParticipantService;
 import org.fnovella.project.participant_aditional_fields.service.ParticipantAditionalFieldsService;
+import org.fnovella.project.program.model.Program;
+import org.fnovella.project.program.service.ProgramServiceImpl;
 import org.fnovella.project.section.service.SectionService;
 import org.fnovella.project.workshop.service.WorkshopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +56,9 @@ public class GroupServiceImpl implements GroupService {
     private EvaluationIndicatorsService evaluationIndicators;
     @Autowired
     private AssistanceService assistanceService;
+    @Autowired
+    private ProgramServiceImpl programServiceImpl;
+   
 
     @Override
     public void updateCategoryStructureAfterCreate(Group group) {
@@ -132,5 +137,9 @@ public class GroupServiceImpl implements GroupService {
             return !CollectionUtils.isEmpty(groupRepository.findBySectionAndYearActivation(classificationId, currentYear));
         }
         return false;
+    }
+
+    public Group getByGroupId(final Integer groupId) {
+        return this.groupRepository.findOne(groupId);        
     }
  }
