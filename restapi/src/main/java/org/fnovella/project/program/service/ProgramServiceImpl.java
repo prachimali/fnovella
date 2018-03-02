@@ -337,4 +337,14 @@ public class ProgramServiceImpl implements ProgramService {
         }
         return program;
     }
+
+    @Override
+    public Program getByProgramId(final Integer programId) {
+        return this.programRepository.findOne(programId);
+    }
+
+    @Override
+    public List<Program> getAllPrograms() {
+        return this.programRepository.findAll();
+    }
 }
